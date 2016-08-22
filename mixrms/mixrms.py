@@ -1,7 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
-from tkinter import filedialog
-import soundfile as sf
+from .menubar import MenuBarController, MenuBar
 
 import matplotlib
 matplotlib.use('TkAgg')
@@ -22,25 +20,6 @@ class MixRMSApp:
     def build_file_menu(self):
         menu_bar = MenuBar(self.root, MenuBarController())
         menu_bar.bind_to_window()
-
-
-class MenuBar:
-    def __init__(self, root, controller):
-        self.root = root
-        self.controller = controller
-        self.menu_bar = tk.Menu(self.root)
-        self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
-        self.file_menu.add_command(label='Open', command=self.controller.load_file)
-        self.menu_bar.add_cascade(label='File', menu=self.file_menu)
-
-    def bind_to_window(self):
-        tk.Tk.config(self.root, menu=self.menu_bar)
-
-
-class MenuBarController:
-    def load_file(self):
-        filename = filedialog.askopenfilename(filetypes=(("Audio files", "*.wav"), ("all files", "*.*")))
-        print(sf.SoundFile(filename))
 
 
 def main():
