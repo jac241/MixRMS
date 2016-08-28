@@ -27,8 +27,7 @@ class FileValidator:
 
 
 class MenuBarController:
-    def __init__(self, file_validator=FileValidator(),
-                 analysis_controller=AnalysisController()):
+    def __init__(self, analysis_controller, file_validator=FileValidator()):
         self.file_validator = file_validator
         self.analysis_controller = analysis_controller
 
