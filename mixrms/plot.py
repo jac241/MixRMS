@@ -1,2 +1,3 @@
 class AnalysisController:
-    pass
+    def plot_analysis(self, filepath):
+        print(filepath)
